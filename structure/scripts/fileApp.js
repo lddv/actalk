@@ -1,11 +1,11 @@
-define(["marionette"],
-	function (Mnt) {
+define(["marionette", "mainView"],
+	function (Mnt, MainView) {
 		var app = new Mnt.Application();
 		app.addRegions({
 			body: "body"
 		});
 		app.on("start", function() {
-			// begin here
+			this.body.show(new MainView());
 		});
 		return app;
 	}

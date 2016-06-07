@@ -28,5 +28,18 @@
 		}
 	</style>
 </head>
-<body/>
+<body>
+	<script id="global" type="text/x-handlebars-template">
+		<div id="content"></div>
+	</script>
+
+	<script id="item" type="text/x-handlebars-template">
+		<span class="item">
+			<div class="name">
+				<span class="category-name">{{name}}</span>
+			</div>
+		</span>
+		<ul class="subcategories"></ul>
+	</script>
+</body>
 </html>

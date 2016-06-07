@@ -1,19 +1,24 @@
 require.config({
     baseUrl: "scripts",
-    paths: { 
+    paths: {
         // library
         jquery: "lib/jquery-1.12.0",
     	underscore: "lib/underscore",
         backbone: "lib/backbone",
     	marionette: "lib/backbone.marionette",
         handlebars: "lib/handlebars-v4.0.5",
+        jqueryui: "lib/jquery-ui",
         // add files here
         fileApp: "fileApp",
-        //myView: ".../myView",
+        mainView: "mainView",
+        fileLayoutView: "fileLayoutView",
+        fileCollection: "fileCollection",
+        fileRootView: "FileRootView",
+        fileTreeView: "fileTreeView"
     },
     shim: {
     	backbone: {
-    		deps: ["jquery", "underscore"],
+        deps: ["jquery", "jqueryui", "underscore"],
     		exports: "backbone"
     	}
     }
