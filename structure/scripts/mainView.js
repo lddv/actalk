@@ -10,17 +10,11 @@ define(['marionette', 'handlebars', 'fileLayoutView', 'fileCollection', 'fileRoo
         this.mainLayout.render();
       },
       onRender: function() {
-        var _this = this;
         var fileCollection = new FileCollection();
-        // this.mainLayout.header.show(new FileHeaderView());
-        fileCollection.fetch({
-          dataType: "jsonp",
-          success: function(col, response) {
-            _this.mainLayout.content.show(new FileRootView({
-              collection: col
-            }));
-          }
-        });
+        fileCollection.fetch();
+				this.mainLayout.content.show(new FileRootView({
+					collection: fileCollection
+				}));
       }
     });
   }

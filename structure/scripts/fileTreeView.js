@@ -4,21 +4,30 @@ define(['marionette', 'handlebars', 'fileCollection'],
 			template: Hbs.compile($('#item').html()),
 			tagName: 'li',
       childViewContainer: '.subcategories',
-			initialize: function(options) {
-				_.extend(this, options);
-				if (_.isEmpty(this.collection)) {
-					var children = this.model.get('children');
-					this.collection = _.isEmpty(children) ? null : new FileCollection(children);
+
+			events: {
+				'click .item-value': 'getData',
+				'click .remove-item-button': 'removeData'
+			},
+			initialize: function(options){
+				this.collection = options.collection ? options.collection : new FileCollection();
+			},
+			removeData: function(e){
+				e.preventDefault();
+				e.stopPropagation();
+				if (!this.model.get('rootElement')) {
+					this.model.collection.remove(this.model);
 				}
 			},
+			getData: function(e){
+				e.preventDefault();
+				e.stopPropagation();
+				this.collection.fetch(this.model.get('value'));
+			},
 			onRender: function() {
-				this.$('.subcategories:first').sortable({ axis: 'y' });
-				this.model.get('children') ? this.$el.find('.category-name').addClass('folder-icon') :
+				this.model.get('children') ? this.$el.find('.category-name').addClass('folder-icon remove-item-button item-value') :
 																		 this.$el.find('.category-name').addClass('file-icon');
 			}
-			// attachView: function(collectionView, childView, index) {
-			// 	collectionView.$('ul:first').append(childView.el);
-			// }
     });
   }
 );

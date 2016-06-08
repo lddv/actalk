@@ -2,10 +2,29 @@ define(['backbone', 'underscore', 'fileModel'],
 	function (Backbone, _, FileModel) {
 		return Backbone.Collection.extend({
       model: FileModel,
-      url: 'http://www.mocky.io/v2/57348812110000d22eba0c18',
-			parse: function(response) {
-				return _.isEmpty(response.data) ? {} : response.data;
-			}
+			fetch: function(size, autoSort){
+				var newCollection = [{
+				  "id": 1001,
+				  "name": "funis",
+				  "size": "KB",
+				  "children": true
+				}, {
+				  "id": 1002,
+				  "name": "stipes",
+				  "size": "KB"
+				}, {
+				  "id": 1003,
+				  "name": "foliolum",
+				  "size": "KB",
+				  "children": true
+				}, {
+				  "id": 1004,
+				  "name": "caballus",
+				  "size": "KB"
+				}];
+
+		    this.add(newCollection, {sort: autoSort});
+		  }
     });
   }
 );

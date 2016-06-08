@@ -1,0 +1,19 @@
+[{
+  "id": 1001,
+  "name": "funis",
+  "size": "KB",
+  "children": true
+}, {
+  "id": 1002,
+  "name": "stipes",
+  "size": "KB"
+}, {
+  "id": 1003,
+  "name": "foliolum",
+  "size": "KB",
+  "children": true
+}, {
+  "id": 1004,
+  "name": "caballus",
+  "size": "KB"
+}]
